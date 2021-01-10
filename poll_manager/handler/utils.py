@@ -1,13 +1,13 @@
-def dict_generate(row: str):
-    list_answers = row.split(";")
+def poll_questions(model_name, questions_ids):
+    questions = questions_ids.split(";")
 
-    if len(list_answers) > 1:
-        dict_answers = {}
+    question_dict = {}
+    question_number = 1
+    for question_id in questions:
+        question = model_name.objects.filter(id=question_id)
+        question = question.values()[0]
+        question.pop("true_answer", None)
+        question_dict[f"{question_number}"] = question
+        question_number += 1
 
-        for i in range(len(list_answers)):
-            dict_answers[str(i + 1)] = list_answers[i]
-
-        return dict_answers
-
-    else:
-        return {"error": "failed Poll"}
+    return question_dict
