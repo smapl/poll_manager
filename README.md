@@ -105,5 +105,5 @@ resp = requests.get("http://127.0.0.1:5000/api/get_passed_polls", json=get_passe
 22.00 - рефакторинг кода и написание документации  
 
 ### Полезные ссылки 
-[poetry].(https://github.com/python-poetry/poetry)  
-[pyenv].(https://github.com/pyenv/pyenv)
+[poetry](https://github.com/python-poetry/poetry)  
+[pyenv](https://github.com/pyenv/pyenv)
