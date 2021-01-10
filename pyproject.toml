@@ -5,9 +5,13 @@ description = ""
 authors = ["smapl <a.mustafin00@mail.ru>"]
 
 [tool.poetry.dependencies]
-python = "^3.8"
+python = "^3.6"
 Django = "^2.2.10"
 django-admin = "^2.0.1"
+logger = "^1.4"
+loguru = "^0.5.3"
+requests = "^2.25.1"
+psycopg2-binary = "^2.8.6"
 
 [tool.poetry.dev-dependencies]
 
