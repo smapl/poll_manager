@@ -6,24 +6,6 @@ class Poll(models.Model):
     DEACTIVED = "deactived"
     CHOICE_STATUS = [(ACTIVE, "active"), (DEACTIVED, "deactived")]
 
-    POLL_TYPE = [
-        "one answer option",
-        "several answer options",
-        "answer with text",
-    ]
-    CHOICE_TYPE_POLL = [
-        (POLL_TYPE[0], "one answer option"),
-        (POLL_TYPE[1], "several answer options"),
-        (POLL_TYPE[2], "answer with text"),
-    ]
-
-    poll_type = models.CharField(
-        "poll type",
-        max_length=150,
-        null=True,
-        choices=CHOICE_TYPE_POLL,
-        default=POLL_TYPE[0],
-    )
     poll_status = models.CharField(
         "poll status", max_length=10, choices=CHOICE_STATUS, default=ACTIVE, null=True
     )
@@ -36,11 +18,32 @@ class Poll(models.Model):
 
 
 class Questions(models.Model):
+    ANSWER_TYPE = [
+        "one answer option",
+        "several answer options",
+        "answer with text",
+    ]
+    CHOICE_TYPE_ANSWER = [
+        (ANSWER_TYPE[0], "one answer option"),
+        (ANSWER_TYPE[1], "several answer options"),
+        (ANSWER_TYPE[2], "answer with text"),
+    ]
+
+    answer_type = models.CharField(
+        "answer type",
+        max_length=150,
+        null=True,
+        choices=CHOICE_TYPE_ANSWER,
+        default=ANSWER_TYPE[0],
+    )
+
     question = models.CharField("question", max_length=500, null=True)
     possible_answer = models.CharField("possible answer", max_length=100, null=True)
+    true_answer = models.CharField("true answer", max_length=100)
 
 
 class UserAnswer(models.Model):
+
     poll_id = models.IntegerField("poll id")
     user_id = models.IntegerField("user id")
     answers = models.CharField("answers", max_length=255)
